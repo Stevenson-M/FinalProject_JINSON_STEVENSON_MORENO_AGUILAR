@@ -5,10 +5,14 @@ public class Student {
     private int id;
     private int age;
 
+    private int counter = 0;
 
-    public Student(String name, int id, int age) {
+
+
+    public Student(String name, int age) {
         this.name = name;
-        this.id = id;
+        this.id = 1 + counter;
+        counter++;
         this.age = age;
     }
 

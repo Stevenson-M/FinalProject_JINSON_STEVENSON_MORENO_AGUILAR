@@ -3,20 +3,21 @@ package org.finalProject.data;
 public class FullTimeTeacher extends Teacher {
     private int experienceYears;
 
-    public FullTimeTeacher(String name, double totalSalary, int experienceYears) {
-        this.name = name;
-        this.totalSalary = setTotalSalary();
+
+    public FullTimeTeacher(String name, double basicSalary, int experienceYears) {
+        super(name, basicSalary);
         this.experienceYears = experienceYears;
     }
 
-    @Override
-    public double setTotalSalary() {
-        return basicSalary * (experienceYears * 1.1);
+    public double calculateTotalSalary() {
+        return super.basicSalary * (this.experienceYears * 1.1);
     }
 
-
-
-
-
-
 }
+
+
+
+
+
+
+

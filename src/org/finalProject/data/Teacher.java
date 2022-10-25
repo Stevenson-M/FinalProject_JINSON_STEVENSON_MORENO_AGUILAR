@@ -1,35 +1,21 @@
 package org.finalProject.data;
 
+import com.sun.deploy.net.MessageHeader;
+
 public abstract class Teacher {
     protected String name;
 
     protected double basicSalary;
-    protected double totalSalary;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public Teacher(String name, double basicSalary) {
         this.name = name;
-    }
-
-    public double getBasicSalary() {
-        return basicSalary;
-    }
-
-    public void setBasicSalary(double basicSalary) {
         this.basicSalary = basicSalary;
     }
 
-    public abstract double setTotalSalary();
-
-    public double getTotalSalary() {
-        return totalSalary;
-    }
+    public abstract double calculateTotalSalary();
 
     @Override
     public String toString() {
-        return "Teacher name: " + name + ", total salary: " + totalSalary;
+        return "Teacher name: " + name + ", total salary: " + calculateTotalSalary()+ "basic salary: " + basicSalary+ "Type of teacher: " + getClass().getSimpleName();
     }
 }

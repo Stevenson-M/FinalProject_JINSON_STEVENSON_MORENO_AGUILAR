@@ -1,17 +1,16 @@
 package org.finalProject.data;
 
 public class PartTimeTeacher extends Teacher {
-    private int activeHours;
+    private float activeHours;
 
-    public PartTimeTeacher(String name, double totalSalary, int activeHours) {
-        this.name = name;
-        this.totalSalary = setTotalSalary();
+
+    public PartTimeTeacher(String name, double basicSalary, float activeHours) {
+        super(name, basicSalary);
         this.activeHours = activeHours;
     }
 
-    @Override
-    public double setTotalSalary() {
-        return basicSalary * activeHours;
+    public double calculateTotalSalary(){
+        return super.basicSalary * this.activeHours;
     }
 
 
