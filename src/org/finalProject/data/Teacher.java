@@ -14,8 +14,14 @@ public abstract class Teacher {
 
     public abstract double calculateTotalSalary();
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
-        return "Teacher name: " + name + ", total salary: " + calculateTotalSalary()+ "basic salary: " + basicSalary+ "Type of teacher: " + getClass().getSimpleName();
+        return "Teacher name: " + name + ", total salary: " + calculateTotalSalary()+ ", basic salary: " + basicSalary+ ", Type of teacher: " + getClass().getSimpleName();
     }
+
+
 }

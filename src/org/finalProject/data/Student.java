@@ -16,6 +16,12 @@ public class Student {
         this.age = age;
     }
 
+    public Student(String name) {
+        this.name = name;
+        this.id = 1 + counter;
+        counter++;
+    }
+
     public String getName() {
         return name;
     }

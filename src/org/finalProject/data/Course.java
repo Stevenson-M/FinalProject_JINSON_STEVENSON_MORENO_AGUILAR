@@ -16,8 +16,31 @@ public class Course {
         this.teacher = teacher;
     }
 
+    public Course() {
+    }
+
+    public String getStudentsNames() {
+        String studentsNames = "";
+        for (Student student : studentsList) {
+            studentsNames += student.getName() + ", ";
+        }
+        return studentsNames;
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    @Override
+    public String toString() {
+        return "Course name: " + courseName + ", course room: " + courseRoom + ", students: " + getStudentsNames() + " teacher: " + teacher.getName();
+    }
 
 
+    public void addStudent(String studentName) {
+studentsList.add(new Student(studentName));
+
+    }
 }
 
 

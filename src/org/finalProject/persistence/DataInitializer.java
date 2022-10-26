@@ -8,7 +8,7 @@ import java.util.List;
 public class DataInitializer {
 
     public static University loadUniversity(){
-        University myUniversity = new University("M.I.T");
+        University myUniversity = new University("Globant University");
         loadStudentsIntoUniversity(myUniversity);
         loadTeachersIntoUniversity(myUniversity);
         loadCourseIntoUniversity(myUniversity);
