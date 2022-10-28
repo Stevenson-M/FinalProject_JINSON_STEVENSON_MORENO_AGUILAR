@@ -4,7 +4,6 @@ import com.sun.deploy.net.MessageHeader;
 
 public abstract class Teacher {
     protected String name;
-
     protected double basicSalary;
 
     public Teacher(String name, double basicSalary) {
@@ -12,16 +11,26 @@ public abstract class Teacher {
         this.basicSalary = basicSalary;
     }
 
-    public abstract double calculateTotalSalary();
+    public Teacher(String teacherName) {
+        this.name = teacherName;
+    }
 
     public String getName() {
         return name;
     }
 
+
+
+    public abstract double calculateTotalSalary();
+
+
+
+
     @Override
     public String toString() {
         return "Teacher name: " + name + ", total salary: " + calculateTotalSalary()+ ", basic salary: " + basicSalary+ ", Type of teacher: " + getClass().getSimpleName();
     }
+
 
 
 }
