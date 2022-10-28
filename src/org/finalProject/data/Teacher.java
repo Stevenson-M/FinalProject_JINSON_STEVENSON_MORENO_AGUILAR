@@ -11,20 +11,11 @@ public abstract class Teacher {
         this.basicSalary = basicSalary;
     }
 
-    public Teacher(String teacherName) {
-        this.name = teacherName;
-    }
-
     public String getName() {
         return name;
     }
 
-
-
     public abstract double calculateTotalSalary();
-
-
-
 
     @Override
     public String toString() {

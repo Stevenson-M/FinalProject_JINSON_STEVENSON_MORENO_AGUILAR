@@ -19,16 +19,6 @@ public class Course {
     public Course() {
     }
 
-    public Course(String courseName) {
-        this.courseName = courseName;
-    }
-
-    public Course(String courseName2, String courseRoom) {
-        this.courseName = courseName2;
-        this.courseRoom = courseRoom;
-    }
-
-
     public String getStudentsNames() {
         String studentsNames = "";
         for (Student student : studentsList) {
@@ -41,30 +31,15 @@ public class Course {
         return courseName;
     }
 
-
-    public void addStudent(String studentName) {
-        studentsList.add(new Student(studentName));
+    public void addStudent(Student newStudent) {
+        studentsList.add(newStudent);
     }
-
-    public void addTeacher(String teacherName) {
-        teacher = new Teacher(teacherName) {
-            @Override
-            public double calculateTotalSalary() {
-                return 0;
-            }
-        };
-    }
-
 
     @Override
     public String toString() {
         return "Course name: " + courseName + ", course room: " + courseRoom + ", students: " + getStudentsNames() + " teacher: " + teacher.getName();
     }
 
-
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
-    }
 }
 
 
