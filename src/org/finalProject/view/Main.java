@@ -1,4 +1,4 @@
-package org.finalProject.runner;
+package org.finalProject.view;
 
 import org.finalProject.data.Course;
 import org.finalProject.data.Student;
@@ -19,13 +19,14 @@ public class Main {
 
         do {
             try {
-                System.out.println("Welcome to " + myUniversity.getName() + " University");
-                System.out.println("1. Print all the professors of the university");
-                System.out.println("2. Print list of the courses of the university");
-                System.out.println("3. Create a new student");
-                System.out.println("4. Create a new course");
-                System.out.println("5. List all the courses of a particular student");
-                System.out.println("6. Exit");
+                System.out.println("|********************** Welcome To " + myUniversity.getName() + "**********************|");
+                System.out.println("|--------1. Print professors list------------------------------------------|");
+                System.out.println("|--------2. Print Courses list---------------------------------------------|");
+                System.out.println("|--------3. Register a new student-----------------------------------------|");
+                System.out.println("|--------4. Register a new course------------------------------------------|");
+                System.out.println("|--------5. Print all the courses of a particular student------------------|");
+                System.out.println("|--------6. Exit-----------------------------------------------------------|");
+                System.out.println("");
 
                 option = scan.nextInt();
                 scan = new Scanner(System.in);
@@ -60,6 +61,10 @@ public class Main {
         } while (option != 6);
     }
 
+    /**
+     * Metodo que imprime las lista completa de profesores con todos sus datos
+     * @param university la universidad
+     */
     private static void printTeacherList(University university) {
         if (university.getTeachersAmount() == 0) {
             System.out.println("There are currently no professors registered at the university");
@@ -70,6 +75,11 @@ public class Main {
         }
     }
 
+    /**
+     * Metodo que imprime los datos de un curso en particular
+     * @param university la universidad
+     * @param courseName Nombre del curso
+     */
     private static void printCourseData(University university, String courseName) {
         Course newCourse = university.getCourseByName(courseName);
 
@@ -80,6 +90,10 @@ public class Main {
         }
     }
 
+    /**
+     * Metodo que imprime la lista completa de cursos
+     * @param university la universidad
+     */
     private static void printCoursesName(University university) {
         if (university.getCoursesAmount() == 0) {
             System.out.println("There are currently no courses registered at the university");
@@ -89,6 +103,10 @@ public class Main {
         }
     }
 
+    /**
+     * Metodo que imprime la lista completa de cursos con todos sus datos
+     * @param university la universidad
+     */
     private static void printCourses( University university) {
         printCoursesName(university);
         Scanner scan = new Scanner(System.in);
@@ -117,6 +135,13 @@ public class Main {
 
     }
 
+    /**
+     * Metodo que mira si registra un nuevo estudiante a un curso
+     * @param university la universidad
+     * @param studentName nombre del estudiante
+     * @param studentAge edad del estudiante
+     * @param courseName nombre del curso
+     */
     private static void createStudentAndAddToAnExistingCourse(University university, String studentName,int studentAge, String courseName) {
         Course newCourse = university.getCourseByName(courseName);
 
@@ -131,6 +156,10 @@ public class Main {
         }
     }
 
+    /**
+     * Metodo que registra un nuevo estudiante
+     * @param university la universidad
+     */
     private static void createStudent(University university){
             Scanner scan = new Scanner(System.in);
 
@@ -162,11 +191,19 @@ public class Main {
                             System.out.println("Enter 2 if you want to go back to the main menu");
                             option = scan.nextInt();
                             scan = new Scanner(System.in);
+                            if(option != 1 && option != 2) {
+                                System.out.println("Invalid option");
+                                break;
+                            }
                         }
                 }
             }while(option != 2);
     }
 
+    /**
+     * Metodo que imprime los nombre de los profesored de la universidad
+     * @param university la universidad
+     */
     private static void printTeacherNames(University university) {
         if (university.getTeachersAmount() == 0) {
             System.out.println("There are currently no professors registered at the university");
@@ -176,6 +213,10 @@ public class Main {
         }
     }
 
+    /**
+     * Metodo que imprime los nombres de los estudiantes de la universidad
+     * @param university la universidad
+     */
     private static void printStudentsNames(University university) {
         if (university.getStudentsAmount() == 0) {
             System.out.println("There are currently no students registered at the university");
@@ -186,11 +227,23 @@ public class Main {
         }
     }
 
+    /**
+     * Metodo que crea un nuevo curso
+     * @param university la universidad
+     * @param courseName nombre del curso
+     * @param courseRoom numero de la sala
+     * @param teacher nombre del profesor
+     * @param newCourseStudents estudiantes del curso
+     */
     private static void createCourse(University university, String courseName, String courseRoom, Teacher teacher, List<Student> newCourseStudents) {
         Course newCourse = new Course(courseName, courseRoom, (ArrayList<Student>) newCourseStudents, teacher);
         university.addCourse(newCourse);
     }
 
+    /**
+     * Metodo que crea un nuevo curso
+     * @param university la universidad
+     */
     private static void createNewCourse(University university){
         Scanner scan = new Scanner(System.in);
 
@@ -201,7 +254,10 @@ public class Main {
             System.out.println("Enter the name of the course: ");
             String courseName2 = scan.nextLine();
             scan = new Scanner(System.in);
-            if (university.verifyCourse(courseName2) == true) {
+            if(courseName2.length()== 0 || Course.isNameValid(courseName2) == false) {
+                System.out.println("Invalid name");
+            }
+            else if (university.verifyCourse(courseName2) == true) {
                 System.out.println("The course already exists");
             } else {
                 List<Student> newCourseStudents = new ArrayList<>();
@@ -216,34 +272,45 @@ public class Main {
                     System.out.println("Enter the room of the course: ");
                     String courseRoom = scan.nextLine();
                     scan = new Scanner(System.in);
-                    System.out.println("Enter the number of the students that will attend the course: ");
-                    int numberOfStudents = scan.nextInt();
-                    scan = new Scanner(System.in);
-                    if (numberOfStudents <=0){
-                        System.out.println("Invalid number of students");
-
-                    }else if (numberOfStudents > university.studentListSize()) {
-                        System.out.println("The number of students is too big");
-
+                    if (courseRoom.length() == 0 ) {
+                        System.out.println("Invalid name for de room");
                     } else {
-                        for (int i = 0; i < numberOfStudents; i++) {
-                            printStudentsNames(university);
-                            System.out.println("Enter the name of the student: ");
-                            String studentName2 = scan.nextLine();
-                            scan = new Scanner(System.in);
-                            if (university.verifyStudent(studentName2) == false) {
-                                System.out.println("The student doesn't exist");
-                            } else {
-                                newCourseStudents.add(university.getStudent(studentName2));
-                            }
-                        }
-                        createCourse(university, courseName2, courseRoom, teacher, newCourseStudents);
-                        System.out.println("The course has been created");
-                        System.out.println("Enter 1 if you want to create another course");
-                        System.out.println("Enter 2 if you want to go back to the main menu");
-                        option = scan.nextInt();
+                        System.out.println("Enter the number of the students that will attend the course: ");
+                        int numberOfStudents = scan.nextInt();
                         scan = new Scanner(System.in);
+                        if (numberOfStudents <= 0) {
+                            System.out.println("Invalid number of students");
 
+                        } else if (numberOfStudents > university.studentListSize()) {
+                            System.out.println("The number of students is too big");
+
+                        } else {
+                            for (int i = 0; i < numberOfStudents; i++) {
+                                printStudentsNames(university);
+                                System.out.println("Enter the name of the student: ");
+                                String studentName2 = scan.nextLine();
+                                scan = new Scanner(System.in);
+                                if (studentName2.length() == 0) {
+                                    System.out.println("Invalid Name");
+                                }
+                                else if (university.verifyStudent(studentName2) == false) {
+                                    System.out.println("The student doesn't exist");
+                                } else {
+                                    newCourseStudents.add(university.getStudent(studentName2));
+                                }
+                            }
+                            createCourse(university, courseName2, courseRoom, teacher, newCourseStudents);
+                            System.out.println("The course has been created");
+                            System.out.println("Enter 1 if you want to create another course");
+                            System.out.println("Enter 2 if you want to go back to the main menu");
+                            option = scan.nextInt();
+                            scan = new Scanner(System.in);
+                            if(option != 1 && option != 2) {
+                                System.out.println("Invalid option");
+                                break;
+                            }
+
+                        }
                     }
                 }
             }
@@ -252,6 +319,11 @@ public class Main {
 
     }
 
+    /**
+     * Metodo que imprime los nombres de los cursos en los que esta inscrito un estudiante
+     * @param university la universidad
+     * @param studentId el id del estudiante
+     */
     private static void printCoursesOfAStudent(University university, int studentId) {
         if (university.getStudentsAmount() == 0) {
             System.out.println("There are currently no students registered at the university");
@@ -262,6 +334,10 @@ public class Main {
         }
     }
 
+    /**
+     * Metodo que imprime los nombres de los cursos en los que esta inscrito un estudiante
+     * @param university la universidad
+     */
     private static void findStudentCourses(University university) {
         Scanner scan = new Scanner(System.in);
 

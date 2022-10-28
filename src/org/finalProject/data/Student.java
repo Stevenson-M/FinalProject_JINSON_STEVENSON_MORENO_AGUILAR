@@ -6,6 +6,11 @@ public class Student {
     private int age;
     private static int counter = 0;
 
+    /**
+     * Constructor de la clase Student
+     * @param name
+     * @param age
+     */
     public Student(String name, int age) {
         this.name = name;
         this.id = 1 + counter;
@@ -13,6 +18,11 @@ public class Student {
         this.age = age;
     }
 
+    /**
+     * Metodo que valida que el nombre ingresado sea solo String
+     * @param  studentName nombre del estudiante
+     * @return true si el nombre es valido
+     */
     public static boolean isNameValid(String studentName) {
         boolean isNameValid = false;
         if (studentName.matches("[a-zA-Z]+")) {
@@ -22,10 +32,18 @@ public class Student {
     }
 
 
+    /**
+     * Metodo que obtiene el nombre del estudiante
+     * @return nombre del estudiante
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Metodo que obtiene el id del estudiante
+     * @return id del estudiante
+     */
     public int getId() {
         return id;
     }
