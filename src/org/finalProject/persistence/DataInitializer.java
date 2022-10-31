@@ -16,11 +16,11 @@ public class DataInitializer {
     }
     private static void loadTeachersIntoUniversity(University myUniversity) {
 
-        FullTimeTeacher teacher1 = new FullTimeTeacher("John Martin", 1000, 3);
-        FullTimeTeacher teacher2 = new FullTimeTeacher("Mary Brown", 2000, 6);
+        Teacher teacher1 = new FullTimeTeacher("John Martin", 1000, 3);
+        Teacher teacher2 = new FullTimeTeacher("Mary Brown", 2000, 6);
 
-        PartTimeTeacher teacher3 = new PartTimeTeacher("Peter Black", 500, 9.3f);
-        PartTimeTeacher teacher4 = new PartTimeTeacher("Jane Fishman", 500, 10.5f);
+        Teacher teacher3 = new PartTimeTeacher("Peter Black", 500, 9.3f);
+        Teacher teacher4 = new PartTimeTeacher("Jane Fishman", 500, 10.5f);
 
         myUniversity.addTeacher(teacher1);
         myUniversity.addTeacher(teacher2);

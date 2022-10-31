@@ -19,6 +19,7 @@ public class Main {
 
         do {
             try {
+                System.out.println("");
                 System.out.println("|********************** Welcome To " + myUniversity.getName() + "**********************|");
                 System.out.println("|--------1. Print professors list------------------------------------------|");
                 System.out.println("|--------2. Print Courses list---------------------------------------------|");
@@ -152,7 +153,6 @@ public class Main {
             university.addStudent(newStudent);
             newCourse.addStudent(newStudent);
             System.out.println("The Student " + studentName + " has been successfully added to the course " + courseName);
-
         }
     }
 

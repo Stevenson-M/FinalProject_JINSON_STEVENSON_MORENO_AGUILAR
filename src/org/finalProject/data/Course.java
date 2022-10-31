@@ -1,6 +1,7 @@
 package org.finalProject.data;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Course {
     private String courseName;
@@ -66,6 +67,9 @@ public class Course {
      * Metodo que agregan un estudiante a la lista de estudiantes del curso
      * @param newStudent estudiante a agregar
      */
+   /** public void addStudent(Student newStudent) {
+        studentsList.add(newStudent);
+    }**/
     public void addStudent(Student newStudent) {
         studentsList.add(newStudent);
     }
